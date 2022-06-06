@@ -30,6 +30,8 @@ class CompanyController extends Controller
     {
         $company = Company::create($request->validated());
 
+        dd($company);
+
         return new CompanyResource($company);
     }
 

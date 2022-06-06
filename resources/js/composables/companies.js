@@ -20,6 +20,10 @@ export default function useCompanies() {
     }
 
     const storeCompany = async (data) => {
+        let test
+        test =  axios.post('/api/companies', data)
+        console.log(test)
+        return
         errors.value = ''
         try {
             await axios.post('/api/companies', data)
