@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 Route::resource('/profile', ProfileController::class)->middleware(['auth'])->name('profile', 'profile.update');
+Route::resource('/property', PropertyController::class)->middleware(['auth'])->name('property', 'property.update');
 
 require __DIR__.'/auth.php';

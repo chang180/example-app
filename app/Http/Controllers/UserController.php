@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
-use App\Http\Requests\StorePropertyRequest;
-use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 
-class PropertyController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,9 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::count();
+        $properties = Property::count();
+        return view('dashboard', compact('users', 'properties'));
     }
 
     /**
@@ -32,10 +33,10 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePropertyRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePropertyRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -43,24 +44,21 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $property
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($user_id)
+    public function show($id)
     {
-        $user_list = Property::where('user_id', 1)->get();
-        $user_list->owner = User::where('id', $user_id)->first()->name;
-
-        return view('property', compact('user_list'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Property  $property
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    public function edit($id)
     {
         //
     }
@@ -68,11 +66,11 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePropertyRequest  $request
-     * @param  \App\Models\Property  $property
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePropertyRequest $request, Property $property)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +78,10 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Property  $property
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Property $property)
+    public function destroy($id)
     {
         //
     }
