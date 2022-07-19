@@ -14,7 +14,9 @@ class PropertyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title(),
+            'description' => $this->faker->sentence(),
+            'address' => $this->faker->address(),
         ];
     }
 }

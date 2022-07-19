@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 
 class ProfileSeeder extends Seeder
@@ -16,17 +17,12 @@ class ProfileSeeder extends Seeder
         // make sure the user has a profile
         $user = auth()->user();
         if (!$user->profile) {
-            $user->profile()->create([
+           Profile::create([
                 'name' => $user->name,
                 'avatar' => 'https://i.pravatar.cc/300',
-                'cover' => 'https://i.pravatar.cc/600',
-                'bio' => 'I am a web developer',
                 'website' => 'https://www.example.com',
                 'phone' => '123456789',
                 'address' => '123 Main St',
-                'city' => 'New York',
-                'country' => 'USA',
-                'zip' => '10001',
             ]);
         }
 

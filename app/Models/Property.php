@@ -10,25 +10,14 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
-        'slug',
         'description',
         'address',
-        'city',
-        'country',
-        'zip',
-        'price',
-        'type',
-        'status',
-        'bedrooms',
-        'bathrooms',
-        'garage',
-        'area',
-        'image',
     ];
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withDefault();
     }
 }

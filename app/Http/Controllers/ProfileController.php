@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -15,9 +16,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // Get the user's profile.
-        $profile = auth()->user()->profile;
-        return view('profile', compact($profile));
+        // Get the all users' profile and properties.
+        $users = User::with('profile')->with('property')->limit(20)->get();
+
+        return view('profile', compact('users'));
     }
 
     /**

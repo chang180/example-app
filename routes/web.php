@@ -22,6 +22,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('profile', ProfileController::class)->middleware(['auth']);
+Route::resource('/profile', ProfileController::class)->middleware(['auth'])->name('profile', 'profile.update');
 
 require __DIR__.'/auth.php';

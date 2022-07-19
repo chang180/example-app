@@ -14,7 +14,12 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'avatar' => $this->faker->imageUrl(100, 100),
+            'website' => $this->faker->url(),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+
         ];
     }
 }
